@@ -1,0 +1,8 @@
+prefix=/home/tangy-user/groovy_ws/install
+
+Name: baxter_description
+Description: Description of baxter_description
+Version: 1.0.0
+Cflags: 
+Libs: -L/home/tangy-user/groovy_ws/install/lib 
+Requires: 

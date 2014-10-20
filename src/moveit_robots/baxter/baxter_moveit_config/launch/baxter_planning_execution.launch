@@ -1,0 +1,32 @@
+<launch>
+
+ <include file="$(find baxter_moveit_config)/launch/planning_context.launch">
+   <arg name="load_robot_description" value="true"/>
+ </include>
+
+ <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+   <param name="/use_gui" value="false"/>
+ </node>
+  
+ <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen" />
+
+ <node name="baxter_intro_demo" pkg="baxter_examples" type="baxter_intro_demo" respawn="false"/>
+
+ <include file="$(find baxter_moveit_config)/launch/move_group.launch">
+  <arg name="publish_monitored_planning_scene" value="true" />
+  <arg name="allow_trajectory_execution" value="true"/>
+ </include>
+
+ <node name="joint_trajectory_action_server" pkg="baxter_interface" type="joint_trajectory_action_server.py" respawn="true"/>
+
+ <node name="gripper_action_server" pkg="baxter_interface" type="gripper_action_server.py" />
+
+ <node name="gripper_cuff_control" pkg="baxter_examples" type="gripper_cuff_control.py" />
+
+ # The visualization component of MoveIt!
+ <!--include file="$(find baxter_moveit_config)/launch/moveit_rviz.launch" >
+    <arg name="config" value="true"/>
+  </include-->
+
+ <include file="$(find baxter_moveit_config)/launch/default_warehouse_db.launch" />
+</launch>

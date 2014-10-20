@@ -1,0 +1,8 @@
+prefix=/home/tangy-user/groovy_ws/devel
+
+Name: baxter_core_msgs
+Description: Description of baxter_core_msgs
+Version: 1.0.0
+Cflags: -I/home/tangy-user/groovy_ws/devel/include
+Libs: -L/home/tangy-user/groovy_ws/devel/lib 
+Requires: message_runtime geometry_msgs sensor_msgs std_msgs
